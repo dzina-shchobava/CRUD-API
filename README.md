@@ -29,7 +29,7 @@ In project use only:
 > `$ git checkout crud-develop`
  
 5. Install dependencies
-> `npm intall`
+> `npm install`
 
 ### How to run the project
 
