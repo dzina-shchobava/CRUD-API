@@ -1,5 +1,6 @@
 import http from 'http';
 import { getUsers, getUser } from "./controllers/get.js";
+import { postUser } from "./controllers/post.js";
 
 const PORT = process.env.PORT || 5000;
 
@@ -14,6 +15,12 @@ http.createServer(async (request, response) => {
         await getUser(request, response, id);
       }
     } break;
+
+    case "POST":
+      if (request.url === '/api/users') {
+        postUser(request, response);
+      }
+      break;
 
     default:
       response.writeHead(404,{ 'Content-Type': 'application/json' });
