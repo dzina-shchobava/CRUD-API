@@ -9,11 +9,11 @@ export const deleteUser = async (request: IncomingMessage, response: ServerRespo
       await removeUser(id);
 
       response.writeHead(200,{ 'Content-Type': 'application/json' });
-      response.end(JSON.stringify('User was deleted'));
+      response.end(JSON.stringify({ message: "User was deleted" }));
 
     } else {
       response.writeHead(404,{ 'Content-Type': 'application/json' });
-      response.end(JSON.stringify(`User with id=${id} not found`));
+      response.end(JSON.stringify({ message: `User with id=${id} not found` }));
     }
 
 

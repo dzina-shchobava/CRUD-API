@@ -26,7 +26,7 @@ export const putUser = async (request: IncomingMessage, response: ServerResponse
 
     } else {
       response.writeHead(404,{ 'Content-Type': 'application/json' });
-      response.end(JSON.stringify(`User with id=${id} not found`));
+      response.end(JSON.stringify({ message: `User with id=${id} not found`}));
     }
 
 

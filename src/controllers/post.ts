@@ -22,7 +22,7 @@ export const postUser = async (request: IncomingMessage, response: ServerRespons
       response.end(JSON.stringify(newUsers));
     } else {
       response.writeHead(400,{ 'Content-Type': 'application/json' });
-      response.end('Request does not contain required fields');
+      response.end({ message: 'Request does not contain required fields' });
     }
   } catch (e) {
     console.log(e);
