@@ -54,10 +54,10 @@ request replaces only the specified fields of the object, the rest remain unchan
 - DELETE `api/users/${userId}` is used to delete existing user from database.
 
 2. Users are stored as objects that have following properties:
-- id — unique identifier (string, uuid) generated on server side
-- username — user's name (string, **required**)
-- age — user's age (number, **required**)
-- hobbies — user's hobbies (array of strings or empty array, **required**)
+- id — unique identifier (string, uuid) generated on server side;
+- username — user's name (string, **required**);
+- age — user's age (number, **required**);
+- hobbies — user's hobbies (array of strings or empty array, **required**);
 
 
 
