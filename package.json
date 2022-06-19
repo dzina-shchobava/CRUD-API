@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "start:dev": "nodemon ./dist/server.js",
+    "start:prod": "tsc && node ./dist/server.js",
     "compile": "tsc -watch"
   },
   "repository": {
