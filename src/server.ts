@@ -2,6 +2,7 @@ import http from 'http';
 import { getUsers, getUser } from "./controllers/get.js";
 import { postUser } from "./controllers/post.js";
 import { putUser } from "./controllers/put.js";
+import { deleteUser } from "./controllers/delete.js";
 
 const PORT = process.env.PORT || 5000;
 
@@ -27,6 +28,13 @@ http.createServer(async (request, response) => {
       if ((request.url as string).match(/\/api\/users\/(\w)/)) {
         const id = (request.url as string).split('/')[3];
         await putUser(request, response, id);
+      }
+      break;
+
+    case "DELETE":
+      if ((request.url as string).match(/\/api\/users\/(\w)/)) {
+        const id = (request.url as string).split('/')[3];
+        await deleteUser(request, response, id);
       }
       break;
 
