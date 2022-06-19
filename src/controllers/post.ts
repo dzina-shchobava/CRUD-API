@@ -8,23 +8,43 @@ export const postUser = async (request: IncomingMessage, response: ServerRespons
 
     const { username, age, hobbies } = JSON.parse(body as string);
 
+    if (!hobbies || !username || !age) {
+      response.writeHead(400, { "Content-Type": "application/json" });
+      response.end(JSON.stringify({ message: "Request does not contain required fields" }));
+      return;
+    }
+
+    if (typeof username !== "string") {
+      response.writeHead(400, { "Content-Type": "application/json" });
+      response.end(JSON.stringify({ message: "The 'username' field must be string" }));
+      return;
+    }
+
+    if (typeof age !== "number") {
+      response.writeHead(400, { "Content-Type": "application/json" });
+      response.end(JSON.stringify({ message: "The 'age' field must be number" }));
+      return;
+    }
+
+    if (!Array.isArray(hobbies)) {
+      response.writeHead(400, { "Content-Type": "application/json" });
+      response.end(JSON.stringify({ message: "The 'hobbies' field must be an array of strings or empty array" }));
+      return;
+    }
+
     const user = {
       username,
       age,
       hobbies: [
         ...hobbies
       ]
-    }
+    };
 
-    if (username && age ) {
-      const newUsers = await createUser(user);
-      response.writeHead(201,{ 'Content-Type': 'application/json' });
-      response.end(JSON.stringify(newUsers));
-    } else {
-      response.writeHead(400,{ 'Content-Type': 'application/json' });
-      response.end({ message: 'Request does not contain required fields' });
-    }
+    const newUsers = await createUser(user);
+    response.writeHead(201, { "Content-Type": "application/json" });
+    response.end(JSON.stringify(newUsers));
+
   } catch (e) {
     console.log(e);
   }
-}
+};
