@@ -3,8 +3,9 @@ import { getUsers, getUser } from "./controllers/get.js";
 import { postUser } from "./controllers/post.js";
 import { putUser } from "./controllers/put.js";
 import { deleteUser } from "./controllers/delete.js";
+import 'dotenv/config';
 
-const PORT = process.env.PORT || 5000;
+const PORT = process.env.PORT;
 
 http.createServer(async (request, response) => {
 
