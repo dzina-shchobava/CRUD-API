@@ -21,7 +21,7 @@ const createUser = (user: RawUser) => {
     const newUser = { userId: uuidv4(), ...user};
     users.push(newUser);
     console.log(users);
-    const newContent = `export const users = ${JSON.stringify(users)}`;
+    const newContent = `import { User } from "../utils/interfaces.js"; export const users: User[] = ${JSON.stringify(users)}`;
     writeDataToFile(newContent);
     resolve(newUser);
   })
@@ -31,7 +31,7 @@ const updateUser = (id: string, user: RawUser) => {
   return new Promise((resolve) => {
     const updatedUserIndex = users.findIndex((item: User) => item.userId === id );
     users[updatedUserIndex] = { userId: id, ...user};
-    const updatedContent = `export const users = ${JSON.stringify(users)}`;
+    const updatedContent = `import { User } from "../utils/interfaces.js"; export const users: User[] = ${JSON.stringify(users)}`;
     writeDataToFile(updatedContent);
     resolve(users[updatedUserIndex]);
   })
@@ -41,7 +41,7 @@ const removeUser = (id: string) => {
   return new Promise<void>((resolve) => {
     const updatedUserIndex = users.findIndex((item: User) => item.userId === id );
     users.splice(updatedUserIndex, 1)
-    const updatedContent = `export const users = ${JSON.stringify(users)}`;
+    const updatedContent = `import { User } from "../utils/interfaces.js"; export const users: User[] = ${JSON.stringify(users)}`;
     writeDataToFile(updatedContent);
     resolve();
   })
