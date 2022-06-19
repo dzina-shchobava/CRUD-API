@@ -5,7 +5,6 @@ import { User } from "../utils/interfaces.js";
 import { checkId } from "../utils/checkId.js";
 
 export const putUser = async (request: IncomingMessage, response: ServerResponse, id: string) => {
-  try {
 
     if (!checkId(id)) {
       response.writeHead(400, { 'Content-Type': 'application/json' });
@@ -53,7 +52,4 @@ export const putUser = async (request: IncomingMessage, response: ServerResponse
       response.end(JSON.stringify({ message: `User with id=${id} not found`}));
     }
 
-  } catch (e) {
-    console.log(e);
-  }
 }

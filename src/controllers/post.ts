@@ -3,7 +3,7 @@ import { createUser } from "../models/usersModel.js";
 import { getPostData } from "../utils/getPostData.js";
 
 export const postUser = async (request: IncomingMessage, response: ServerResponse) => {
-  try {
+
     const body = await getPostData(request);
 
     const { username, age, hobbies } = JSON.parse(body as string);
@@ -44,7 +44,4 @@ export const postUser = async (request: IncomingMessage, response: ServerRespons
     response.writeHead(201, { "Content-Type": "application/json" });
     response.end(JSON.stringify(newUsers));
 
-  } catch (e) {
-    console.log(e);
-  }
 };
