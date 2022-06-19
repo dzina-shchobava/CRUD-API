@@ -27,4 +27,14 @@ const createUser = (user: RawUser) => {
   })
 }
 
-export { findUsers, findUserById, createUser };
+const updateUser = (id: string, user: RawUser) => {
+  return new Promise((resolve) => {
+    const updatedUserIndex = users.findIndex((item: User) => item.userId === id );
+    users[updatedUserIndex] = { userId: id, ...user};
+    const updatedContent = `export const users = ${JSON.stringify(users)}`;
+    writeDataToFile(updatedContent);
+    resolve(users[updatedUserIndex]);
+  })
+}
+
+export { findUsers, findUserById, createUser, updateUser };

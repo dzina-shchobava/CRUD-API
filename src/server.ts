@@ -1,6 +1,7 @@
 import http from 'http';
 import { getUsers, getUser } from "./controllers/get.js";
 import { postUser } from "./controllers/post.js";
+import { putUser } from "./controllers/put.js";
 
 const PORT = process.env.PORT || 5000;
 
@@ -19,6 +20,13 @@ http.createServer(async (request, response) => {
     case "POST":
       if (request.url === '/api/users') {
         postUser(request, response);
+      }
+      break;
+
+    case "PUT":
+      if ((request.url as string).match(/\/api\/users\/(\w)/)) {
+        const id = (request.url as string).split('/')[3];
+        await putUser(request, response, id);
       }
       break;
 
