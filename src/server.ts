@@ -3,7 +3,7 @@ import { getUsers, getUser } from "./controllers/get.js";
 import { postUser } from "./controllers/post.js";
 import { putUser } from "./controllers/put.js";
 import { deleteUser } from "./controllers/delete.js";
-import 'dotenv/config';
+import "dotenv/config";
 
 const PORT = process.env.PORT;
 
@@ -11,10 +11,15 @@ http.createServer(async (request, response) => {
 
   if (request.url === "/api/users") {
     switch (request.method) {
-
-      case "GET": await getUsers(request, response); break;
-
-      case "POST": await postUser(request, response); break;
+      case "GET":
+        await getUsers(request, response);
+        break;
+      case "POST":
+        await postUser(request, response);
+        break;
+      default:
+        response.writeHead(400, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ message: "Wrong request URL or request method" }));
     }
   } else if ((request.url as string).match(/\/api\/users\/(\w)/)) {
 
@@ -37,6 +42,9 @@ http.createServer(async (request, response) => {
         await deleteUser(request, response, id);
         break;
       }
+      default:
+        response.writeHead(400, { "Content-Type": "application/json" });
+        response.end(JSON.stringify({ message: "Wrong request URL or request method" }));
     }
   } else {
     response.writeHead(404, { "Content-Type": "application/json" });
