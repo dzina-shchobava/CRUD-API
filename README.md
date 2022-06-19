@@ -20,10 +20,13 @@ In project use only:
 1. Open Git Bash.
 2. Change the current working directory to the location where you want the cloned directory.
 3. Type command
-> `git clone git@github.com:dina-shchobova/CRUD-API.git`
+> `$ git clone git@github.com:dina-shchobova/CRUD-API.git`
 
 **or**
-> `git clone https://github.com/dina-shchobova/CRUD-API.git`
+> `$ git clone https://github.com/dina-shchobova/CRUD-API.git`
+
+4. Go to development branch  
+> `$ git checkout crud-develop`
 
 ### How to run the project
 
