@@ -1,10 +1,17 @@
 import { IncomingMessage, ServerResponse } from "http";
 import { findUserById, removeUser } from "../models/usersModel.js";
+import { checkId } from "../utils/checkId.js";
 
 export const deleteUser = async (request: IncomingMessage, response: ServerResponse, id: string) => {
   try {
-    const user = await findUserById(id);
 
+    if (!checkId(id)) {
+      response.writeHead(400, { 'Content-Type': 'application/json' });
+      response.end(JSON.stringify({ message: `UserId=${id} is invalid (not uuid)` }));
+      return;
+    }
+
+    const user = await findUserById(id);
     if (user) {
       await removeUser(id);
 
