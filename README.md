@@ -44,6 +44,17 @@ To run this mod use the commands:
 - And then in another terminal run the command:
 > `npm run compile`
 
-### Usage
+### Implementation details
+1. Endpoint `api/users`:
+- GET `api/users` is used to get all users;
+- GET `api/users/${userId}` is used to get one user by `id`;
+- POST `api/users` is used to create record about new user and store it in database;
+- PUT `api/users/{userId}` is used to update existing user (**IMPORTANT! The PUT
+  request replaces only the specified fields of the object, the rest remain unchanged**);
+- DELETE `api/users/${userId}` is used to delete existing user from database.
 
-The PUT request replaces only the specified fields of the object, the rest remain unchanged
+2. Users are stored as objects that have following properties:
+- id — unique identifier (string, uuid) generated on server side;
+- username — user's name (string, **required**);
+- age — user's age (number, **required**);
+- hobbies — user's hobbies (array of strings or empty array, **required**).
