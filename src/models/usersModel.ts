@@ -4,20 +4,20 @@ import { v4 as uuidv4 } from 'uuid';
 import { writeDataToFile } from '../utils/writeData.js';
 
 const findUsers = () => {
-  return new Promise<User[]>((resolve) => {
+  return new Promise((resolve) => {
     resolve(users);
   })
 }
 
 const findUserById = (id: string) => {
-  return new Promise<User | undefined>((resolve) => {
+  return new Promise((resolve) => {
     const user = users.find((item: User) => item.userId === id );
     resolve(user);
   })
 }
 
 const createUser = (user: RawUser) => {
-  return new Promise<User>((resolve) => {
+  return new Promise((resolve) => {
     const newUser = { userId: uuidv4(), ...user};
     users.push(newUser);
     console.log(users);
@@ -28,7 +28,7 @@ const createUser = (user: RawUser) => {
 }
 
 const updateUser = (id: string, user: RawUser) => {
-  return new Promise<User>((resolve) => {
+  return new Promise((resolve) => {
     const updatedUserIndex = users.findIndex((item: User) => item.userId === id );
     users[updatedUserIndex] = { userId: id, ...user};
     const updatedContent = `export const users = ${JSON.stringify(users)}`;
