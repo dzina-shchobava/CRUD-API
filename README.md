@@ -28,6 +28,9 @@ In project use only:
 4. Go to development branch
 > `$ git checkout crud-develop`
 
+5. Install dependencies
+> `npm install`
+
 ### How to run the project
 
 There are two modes of running application (development and production).
@@ -40,9 +43,9 @@ To run this mod use the command
 To run this mod use the commands:
 
 - In one terminal run the command:
-> `npm run start:dev`
-- And then in another terminal run the command:
 > `npm run compile`
+- And then in another terminal run the command:
+> `npm run start:dev`
 
 ### Implementation details
 1. Endpoint `api/users`:
@@ -57,4 +60,4 @@ To run this mod use the commands:
 - id — unique identifier (string, uuid) generated on server side;
 - username — user's name (string, **required**);
 - age — user's age (number, **required**);
-- hobbies — user's hobbies (array of strings or empty array, **required**).
+- hobbies — user's hobbies (array of strings or empty array, **required**);
