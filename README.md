@@ -27,6 +27,9 @@ In project use only:
 
 4. Go to development branch  
 > `$ git checkout crud-develop`
+ 
+5. Install dependencies
+> `npm intall`
 
 ### How to run the project
 
@@ -40,9 +43,9 @@ To run this mod use the command
 To run this mod use the commands:
 
 - In one terminal run the command:  
-> `npm run start:dev`
-- And then in another terminal run the command:
 > `npm run compile`
+- And then in another terminal run the command:
+> `npm run start:dev`
 
 ### Implementation details
 1. Endpoint `api/users`:
